@@ -13,7 +13,7 @@ namespace AppSettingDemo.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        IConfiguration configuration;
+        private readonly IConfiguration configuration;
         public ValuesController(IConfiguration configuration)
         {
             this.configuration = configuration;
@@ -22,14 +22,19 @@ namespace AppSettingDemo.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] {
+                this.configuration.GetValue<string>("MyAppSettings"),
+                this.configuration.GetValue<string>("NestedSettings:SubSettings1"),
+                this.configuration.GetConnectionString("Default"),
+                this.configuration.GetConnectionString("MyLocalDB")
+            };
         }
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return this.configuration.GetVa;
+            return this.configuration.GetValue<string>("MyAppSettings");
         }
     }
 }

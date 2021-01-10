@@ -16,6 +16,18 @@ Infact what we can do is to make different appsettings for different environment
 Example: you might want to use mailing service in your application which might send emails to the users in productions,
 But you might need to use them in lower environments / or development or may use them but for testing only.
 
+Or in case server went donw we need to upgrade the server re-compile the whole whole application
+
+having all your settings/configs in one file can be feasible option 
+
 Well this is not a new concept, .net core is not trying to invent the wheel but trying to re-define the concept.
 In .net framework we used use config files which are XML format observe that in student portal
 Talking about student portal if you observe we have diifferent URL/connections strings for other teams which run in different environments.
+
+You change the value and in appsetting we don't need to re-compile the app again same build will work with another or updated appsettings.
+
+#understanding appsetting.json
+#Pulling the values from appsetting .json
+
+dotnet run --Local "AppSettingDemo"
+
